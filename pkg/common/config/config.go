@@ -89,6 +89,9 @@ const (
 	// Hypershift enables the use of hypershift for cluster creation.
 	Hypershift = "Hypershift"
 
+	// Specifies the cluster will be created in GovCloud
+	FedRAMP = "FedRAMP"
+
 	// Ignores invalid certificates within HyperShift kubeconfig
 	HypershiftIgnoreInvalidCert = "HypershiftIgnoreInvalidCert"
 
@@ -835,6 +838,9 @@ func InitOSDe2eViper() {
 
 	viper.SetDefault(Cluster.EnableFips, false)
 	viper.BindEnv(Cluster.EnableFips, "ENABLE_FIPS")
+
+	viper.SetDefault(FedRAMP, false)
+	viper.BindEnv(FedRAMP, "FEDRAMP")
 
 	// ----- Cloud Provider -----
 	viper.SetDefault(CloudProvider.CloudProviderID, "aws")
